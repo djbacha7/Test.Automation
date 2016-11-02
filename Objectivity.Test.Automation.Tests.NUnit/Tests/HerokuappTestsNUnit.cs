@@ -208,5 +208,28 @@ namespace Objectivity.Test.Automation.Tests.NUnit.Tests
                 .GoToSlowResources()
                 .WaitForIt(timeout);
         }
+
+        [Test]
+        public void DragAndDropTest()
+        {
+            var cardGame = new InternetPage(this.DriverContext)
+                 .OpenCardGameUrl()
+                 .DragAndDrop();
+
+            Assert.AreEqual("You did it!", cardGame.GetMessage);
+        }
+
+        [Test]
+        public void FramesTest()
+        {
+            var input = "Frame Test";
+            var iframe = new InternetPage(this.DriverContext)
+                .OpenHomePage()
+                .GoToFrames()
+                .GoToiFrame()
+                .EnterText(input);
+
+            Assert.AreEqual(input, iframe.Text);
+        }
     }
 }

@@ -98,6 +98,26 @@ namespace Objectivity.Test.Automation.Tests.PageObjects.PageObjects.TheInternet
             return new SlowResourcesPage(this.DriverContext);
         }
 
+        public FramesPage GoToFrames()
+        {
+            this.Driver.GetElement(this.linkLocator.Format("frames")).Click();
+            return new FramesPage(this.DriverContext);
+        }
+
+        public FileUploadPage GoToFileUpload()
+        {
+            this.Driver.GetElement(this.linkLocator.Format("upload")).Click();
+            return new FileUploadPage(this.DriverContext);
+        }
+
+        public DragAndDropPage OpenCardGameUrl()
+        {
+            // This test don't work with Herokuapp drag and drop so link is replaced
+            Uri newUri = new Uri("http://www.elated.com/res/File/articles/development/javascript/jquery/drag-and-drop-with-jquery-your-essential-guide/card-game.html");
+            this.Driver.Navigate().GoToUrl(newUri);
+            return new DragAndDropPage(this.DriverContext);
+        }
+
         public JavaScriptAlertsPage GoToJavaScriptAlerts()
         {
             this.Driver.GetElement(this.linkLocator.Format("javascript_alerts")).Click();
